@@ -4,7 +4,7 @@ Spring Boot (gradle project)
 
 <div>
     <a href="https://projects.spring.io/spring-boot/">
-        <img src="https://projects.spring.io/spring-boot//img/spring-logo.png">
+        <img src="http://blog.scottlogic.com/bjedrzejewski/assets/spring-boot.png" width="300px">
     </a>
 </div>
 
@@ -22,7 +22,7 @@ PostgreSQL
 
 <div>
     <a href="https://www.postgresql.org/">
-        <img src="https://www.postgresql.org/media/img/layout/hdr_left.png">
+        <img src="https://www.postgresql.org/media/img/layout/hdr_left.png" width="300px">
     </a>
 </div>
 
@@ -30,7 +30,7 @@ JQuery
 
 <div>
     <a href="https://jquery.com/">
-        <img src="http://www.vikaskbh.com/wp-content/uploads/2014/01/jquery_logo.png">
+        <img src="http://www.vikaskbh.com/wp-content/uploads/2014/01/jquery_logo.png" width="300px">
     </a>
 </div>
 
@@ -38,7 +38,7 @@ Bootstrap
 
 <div>
     <a href="http://getbootstrap.com/">
-        <img src="https://pkp.sfu.ca/wp-content/uploads/2016/09/bootstrap-logo.png">
+        <img src="https://pkp.sfu.ca/wp-content/uploads/2016/09/bootstrap-logo.png" width="300px">
     </a>
 </div>
 
@@ -46,7 +46,7 @@ Tether
 
 <div>
     <a href="http://tether.io/">
-        <img src="https://static.hubspot.com/style-guide/img/nav-sprocket.png">
+        <img src="https://static.hubspot.com/style-guide/img/nav-sprocket.png" width="300px">
     </a>
 </div>
 
