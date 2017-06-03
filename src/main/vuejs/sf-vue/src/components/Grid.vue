@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ag-grid-vue
+    <ag-grid-vue class="ag-fresh" style="height:300px"
                  :gridOptions="gridOptions"
                  :rowData="rowData">
     </ag-grid-vue>
@@ -8,7 +8,10 @@
 </template>
 
 <script>
-  import {AgGridVue} from 'ag-grid-vue'
+  /* eslint-disable */
+  import {AgGridVue} from 'ag-grid-vue';
+  import '../../node_modules/ag-grid/dist/styles/ag-grid.css';
+  import '../../node_modules/ag-grid/dist/styles/theme-fresh.css';
 
   export default {
     data () {
@@ -16,36 +19,33 @@
         gridOptions: {
           columnDefs: [
             {
-              headerName: 'Name',
+              headerName: '제품',
               field: 'name',
-              width: 400
+              width: 300
             },
             {
-              headerName: 'Age',
-              field: 'age',
-              width: 399
+              headerName: '설비',
+              field: 'asset',
+              width: 160
+            },
+            {
+              headerName: '문제',
+              field: 'problem',
+              width: 200
+            },
+            {
+              headerName: '시간',
+              field: 'date',
+              width: 120
             }
           ]
         },
         rowData: [
-          {name: 'Bob', age: 10},
-          {name: 'Harry', age: 3},
-          {name: 'Sally', age: 20},
-          {name: 'Mary', age: 5},
-          {name: 'John', age: 15},
-          {name: 'Bob', age: 10},
-          {name: 'Harry', age: 3},
-          {name: 'Sally', age: 20},
-          {name: 'Mary', age: 5},
-          {name: 'John', age: 15},
-          {name: 'Jack', age: 25},
-          {name: 'Sue', age: 43},
-          {name: 'Sean', age: 44},
-          {name: 'Niall', age: 2},
-          {name: 'Alberto', age: 32},
-          {name: 'Fred', age: 53},
-          {name: 'Jenny', age: 34},
-          {name: 'Larry', age: 13}
+          {name: 'MAIN FILTER -TYCHE PRESS', asset:'고속 60Ton', problem:'이상정지', date:'2017-04-21 08:31'},
+          {name: 'CABINET R(CLARUS/SUXURY SILVER)', asset:'350Ton(TPL)', problem:'C/T 이상', date:'2017-04-22 11:28'},
+          {name: 'MAIN FILTER -THCHE PRESS', asset:'고속 60Ton', problem:'시간가동률 이상', date:'2017-04-21 08:11'},
+          {name: 'CABINET R(CLARUS/SUXURY SILVER)', asset:'350Ton(TPL)', problem:'성능가동률 이상', date:'2017-04-21 08:05'},
+          {name: 'MAIN FILTER -TYCHE PRESS', asset:'고속 60Ton', problem:'이상정지', date:'2017-04-21 08:31'}
         ]
       }
     },
