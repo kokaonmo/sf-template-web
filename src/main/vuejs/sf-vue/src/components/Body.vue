@@ -24,7 +24,7 @@
       <e-pie-chart v-for="pie in pies" :key="pie.name" class="layout-horizontal" :title="pie.title" :dataProvider="pie.dataProvider" width="350" height="250"></e-pie-chart>
     </e-panel>
     <e-panel title="실시간 종합 이벤트">
-      <e-grid :dataProvider="events" :key="events.value" style="width: 800px; display: inline-block"></e-grid>
+      <e-grid :dataProvider="events" :key="events.value" style="width: 900px; display: inline-block"></e-grid>
       <textarea rows="8" cols="90">
         2017.04.21 08: 31
         LG 고객사의 IN FILTER -TYCHE PRESS 제품 생산시 고속 60Ton 설비에서 금형문제로 이상정지 3분 발생.

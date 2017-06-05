@@ -38,6 +38,10 @@
               headerName: '시간',
               field: 'date',
               width: 120
+            },{
+              headerName: 'C/T',
+              width: 120,
+              cellRendererFramework: 'ChildMessageComponent'
             }
           ]
         },
@@ -45,7 +49,15 @@
       }
     },
     components: {
-      AgGridVue
+      AgGridVue,
+      ChildMessageComponent: {
+        template: '<span><button style="height: 20px" @click="emitCT">Invoke Parent</button></span>',
+        methods: {
+          emitCT() {
+            alert(this.params.node.rowIndex +','+ this.params.colDef.headerName)
+          }
+        }
+      }
     }
   }
 </script>
