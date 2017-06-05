@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ag-grid-vue class="ag-fresh" style="height:300px"
+    <ag-grid-vue class="ag-fresh" style="height:150px;"
                  :gridOptions="gridOptions"
                  :rowData="rowData">
     </ag-grid-vue>
@@ -14,13 +14,14 @@
   import '../../node_modules/ag-grid/dist/styles/theme-fresh.css';
 
   export default {
+    props: ['dataProvider'],
     data () {
       return {
         gridOptions: {
           columnDefs: [
             {
               headerName: '제품',
-              field: 'name',
+              field: 'item',
               width: 300
             },
             {
@@ -40,13 +41,7 @@
             }
           ]
         },
-        rowData: [
-          {name: 'MAIN FILTER -TYCHE PRESS', asset:'고속 60Ton', problem:'이상정지', date:'2017-04-21 08:31'},
-          {name: 'CABINET R(CLARUS/SUXURY SILVER)', asset:'350Ton(TPL)', problem:'C/T 이상', date:'2017-04-22 11:28'},
-          {name: 'MAIN FILTER -THCHE PRESS', asset:'고속 60Ton', problem:'시간가동률 이상', date:'2017-04-21 08:11'},
-          {name: 'CABINET R(CLARUS/SUXURY SILVER)', asset:'350Ton(TPL)', problem:'성능가동률 이상', date:'2017-04-21 08:05'},
-          {name: 'MAIN FILTER -TYCHE PRESS', asset:'고속 60Ton', problem:'이상정지', date:'2017-04-21 08:31'}
-        ]
+        rowData: this.dataProvider
       }
     },
     components: {

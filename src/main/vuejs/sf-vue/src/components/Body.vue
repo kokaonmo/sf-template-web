@@ -18,13 +18,17 @@
     </form>
 
     <e-panel title="종합가동률 TOP5(라인별)">
-      <e-gauge-chart v-for="gauge in gauges" class="layout-horizontal" :title="gauge.title" minValue="0" maxValue="100" :value="gauge.value" width="300" height="250"></e-gauge-chart>
+      <e-gauge-chart v-for="gauge in gauges" :key="gauge.title" class="layout-horizontal" :title="gauge.title" minValue="0" maxValue="100" :value="gauge.value" width="300" height="250"></e-gauge-chart>
     </e-panel>
     <e-panel title="정지현황">
-      <e-pie-chart v-for="pie in pies" class="layout-horizontal" :title="pie.title" :dataProvider="pie.dataProvider" width="350" height="250"></e-pie-chart>
+      <e-pie-chart v-for="pie in pies" :key="pie.name" class="layout-horizontal" :title="pie.title" :dataProvider="pie.dataProvider" width="350" height="250"></e-pie-chart>
     </e-panel>
     <e-panel title="실시간 종합 이벤트">
-      <e-grid></e-grid>
+      <e-grid :dataProvider="events" :key="events.value" style="width: 800px; display: inline-block"></e-grid>
+      <textarea rows="8" cols="90">
+        2017.04.21 08: 31
+        LG 고객사의 IN FILTER -TYCHE PRESS 제품 생산시 고속 60Ton 설비에서 금형문제로 이상정지 3분 발생.
+      </textarea>
     </e-panel>
   </div>
 </template>
@@ -104,7 +108,33 @@
             name: '휴지',
             y: 10.38
           }]
-        }]
+        }],
+        events:[{
+            item: 'MAIN FILTER -TYCHE PRESS',
+            asset: '고속 60Ton',
+            problem: '이상정지',
+            date: '2017-06-21 08:31'
+          },{
+            item: 'CABINET R(CLARUS/RUXURY SILVER)',
+            asset: '350Ton(TPL)',
+            problem: 'C/T 이상',
+            date: '2017-06-21 08:23'
+          },{
+            item: 'MAIN FILTER -TYCHE PRESS',
+            asset: '고속 60Ton',
+            problem: 'C/T 이상',
+            date: '2017-06-21 08:16'
+          },{
+            item: 'CABINET R(CLARUS/RUXURY SILVER)',
+            asset: '고속 60Ton',
+            problem: '이상정지',
+            date: '2017-06-21 08:12'
+          },{
+            item: 'MAIN FILTER -TYCHE PRESS',
+            asset: '고속 60Ton',
+            problem: 'C/T 이상',
+            date: '2017-06-21 08:05'
+          }]
       }
     },
     methods: {
