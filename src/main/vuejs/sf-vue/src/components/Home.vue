@@ -1,15 +1,18 @@
 <template>
   <div id="wrapper">
-    <e-menu></e-menu>
+    <e-menu @clickmenu="onClickMenu"></e-menu>
     <!--<test></test>-->
-    <e-content></e-content>
+    <router-view></router-view>
+    <!--<e-content></e-content>-->
   </div>
 </template>
 
 <script>
   /* eslint-disable */
   import eMenu from './Menu'
-  import eContent from './Content'
+  //import eContent from './Content'
+  import eDashboard from './Dashboard'
+  import eUPH from './Availability'
   //import Test from './GridsterTest'
   export default {
     data () {
@@ -17,8 +20,15 @@
     },
     components: {
       eMenu,
-      eContent
+      eDashboard,
+      eUPH
+//      eContent
 //      Test
+    },
+    methods: {
+      onClickMenu(menu){
+        this.$router.push(menu.path)
+      }
     }
   }
 </script>

@@ -8,13 +8,16 @@
       <ul class="nav" id="side-menu">
         <ul class="nav nav-label">
           <li v-for="(item, i) in menu" v-bind:class="{active: !!item.active}">
-            <a v-bind:href="item.href || '#'" v-on:click="clickMain(i, $event)">
+            <a v-bind:path="item.path || '#'" v-on:click="clickMain(i, $event, item)">
               <i class="fa" v-bind:class="'fa-' + item.fontAwesome"></i>
-              <span>{{item.title}}</span>
+              <span>{{item.caption}}</span>
               <span v-if="item.submenu" class="fa arrow"></span>
             </a>
             <ul v-if="item.submenu" class="nav nav-second-level" v-bind:class="{collapse: !item.active}">
-              <li v-for="(subitem, j) in item.submenu"><a v-bind:href="subitem.href" v-on:click="clickSub(j, $event)">{{subitem.title}}</a></li>
+              <!--<li v-for="(subitem, j) in item.submenu"><a v-bind:href="subitem.href" v-on:click="clickSub(j, $event)">{{subitem.title}}</a></li>-->
+              <li v-for="(subitem, j) in item.submenu" v-bind:class="{active:subitem.active}"><a v-on:click="clickSub(j, $event, item.submenu, subitem)">{{subitem.caption}}</a></li>
+              <!--<li v-for="(subitem, j) in item.submenu"><router-link :to="{name: 'dashboard'}">{{subitem.title}}</router-link></li>-->
+              <!--<li v-for="(subitem, j) in item.submenu"><router-link :to="{name: subitem.href}">{{subitem.href}}</router-link></li>-->
             </ul>
           </li>
           <!--li>
@@ -40,9 +43,11 @@
 //  import '../../node_modules/metismenu/dist/metisMenu.min.js';
   const testData = [
     {
-      title: '종합대쉬보드',
+      caption: '종합대쉬보드',
       fontAwesome: 'dashboard',
-      active: true
+      active: true,
+      path: '/',
+      menuid: '100000'
 //      submenu: [
 //        {
 //          title: 'menu 1-1',
@@ -55,48 +60,98 @@
 //      ]
     },
     {
-      title: '가동률분석',
+      caption: '가동률분석',
       fontAwesome: 'building',
+      menuid: '200000',
+      active: false,
       submenu: [
         {
-          title: '시간가동률',
-          href: '#'
+          caption: '시간가동률',
+          path: 'availability',
+          menuid: '200001',
+          active: true
         },
         {
-          title: '성능가동률',
-          href: '#'
+          caption: '성능가동률',
+          path: '#',
+          menuid: '200002',
+          active: false
         },
         {
-          title: '가동률',
-          href: '#'
+          caption: '가동률',
+          path: '#',
+          menuid: '200003',
+          active: false
         }
       ]
     },
     {
-      title: '정지현황',
+      caption: '정지현황',
       fontAwesome: 'envelope',
-      href: '#'
+      path: 'stopstatus',
+      menuid: '300000',
+      active: false
     }
   ];
 
   export default {
     data () {
       return {
-        menu: testData,
+        menu: testData
       }
     },
-    mounted: function () {
+    mounted () {
+      //alert('mounted')
+      let path = this.$router.currentRoute.path.substr(1)
+      path = path.length<1?'/':path
+
+      this.menu.forEach(function(v) {
+        if(v.submenu){
+          v.submenu.forEach(function(v2) {
+            if(v2.path == path){
+              v.active = true
+              v2.active = true
+            }else{
+              v2.active = false
+            }
+          })
+        }else{
+          console.log(v.path, path)
+          if(v.path == path){
+            v.active = true
+          }else{
+            v.active = false
+          }
+        }
+
+      })
+    },
+    updated () {
+      //alert('updated')
+    },
+    destroyed (){
+
     },
     methods: {
-      clickMain: function(index, e) {
-        console.log(index, this);
+      clickMain: function(index, e, selectedMenu) {
+        console.log(index, selectedMenu);
         this.menu.forEach(function(v, i) {
-          v.active = i==index;
+          v.active = i===index;
         })
+        if(selectedMenu.submenu == undefined){
+          this.$emit('clickmenu', selectedMenu);
+        }else{
+          selectedMenu.submenu.forEach(function(v2) {
+            v2.active = false
+          })
+        }
       },
 
-      clickSub: function(i, e) {
-        console.log(i);
+      clickSub: function(index, e, submenu, selectedMenu) {
+        submenu.forEach(function(v, i) {
+          v.active = i===index;
+        })
+        this.$emit('clickmenu', selectedMenu);
       }
     }
   }

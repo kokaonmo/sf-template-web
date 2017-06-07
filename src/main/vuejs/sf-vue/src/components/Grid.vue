@@ -10,6 +10,7 @@
 <script>
   /* eslint-disable */
   import {AgGridVue} from 'ag-grid-vue';
+  import ButtonRenderer from './renderers/ButtonRenderer'
   import '../../node_modules/ag-grid/dist/styles/ag-grid.css';
   import '../../node_modules/ag-grid/dist/styles/theme-fresh.css';
 
@@ -27,21 +28,22 @@
             {
               headerName: '설비',
               field: 'asset',
-              width: 160
+              width: 120
             },
             {
               headerName: '문제',
               field: 'problem',
-              width: 200
+              width: 100
             },
             {
               headerName: '시간',
               field: 'date',
-              width: 120
+              width: 140
             },{
               headerName: 'C/T',
-              width: 120,
-              cellRendererFramework: 'ChildMessageComponent'
+              width: 80,
+              field: 'isct',
+              cellRendererFramework: 'ButtonRenderer'
             }
           ]
         },
@@ -50,13 +52,17 @@
     },
     components: {
       AgGridVue,
-      ChildMessageComponent: {
-        template: '<span><button style="height: 20px" @click="emitCT">Invoke Parent</button></span>',
-        methods: {
-          emitCT() {
-            alert(this.params.node.rowIndex +','+ this.params.colDef.headerName)
-          }
-        }
+      ButtonRenderer
+    },
+    created () {
+      this.$on('clickct', this.onClickct)
+    },
+    methods: {
+      onClickct (){
+        alert('clicked')
+      },
+      methodFromParent(cell) {
+        alert(`"Parent Component Method from ${cell}!`);
       }
     }
   }

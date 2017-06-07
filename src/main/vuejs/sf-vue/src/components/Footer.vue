@@ -1,11 +1,6 @@
 <template>
-  <div class="footer">
-    <div class="pull-right">
-      10GB of <strong>250GB</strong> Free.
-    </div>
-    <div>
-      <strong>Copyright</strong> ⓒ 2017 EXEM All Rights Reserved.
-    </div>
+  <div style="border-top: solid; border-top-color: #eeeeee;">
+    <strong>Copyright</strong> ⓒ 2017 EXEM All Rights Reserved.
   </div>
 </template>
 
