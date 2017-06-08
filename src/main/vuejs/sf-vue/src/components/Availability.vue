@@ -1,18 +1,23 @@
 <template>
   <div id="page-wrapper" class="gray-bg dashbard-1">
     <div class="row border-bottom">
-      시간가동률
+      <e-availability-header></e-availability-header>
+      <e-availability-body></e-availability-body>
     </div>
   </div>
 </template>
 
 <script>
-  /* eslint-disable */
+  import eAvailabilityHeader from './AvailabilityHeader'
+  import eAvailabilityBody from './AvailabilityBody'
+
   export default {
     data () {
       return {}
     },
     components: {
+      eAvailabilityHeader,
+      eAvailabilityBody
     }
   }
 </script>

@@ -45,13 +45,14 @@
     </form>
     <div>
       <e-panel title="종합 정지 현황" style="display: inline-block; vertical-align: top">
-        <e-pie-chart v-for="pie in new Array(pies[0])" :key="pie.name" legendHorizontalAlign="center" legendVerticalAlign="top" class="layout-horizontal" :title="pie.title" :dataProvider="pie.dataProvider" width="350" height="350"></e-pie-chart>
+        <e-pie-chart v-for="pie in pies" :key="pie.name" legendHorizontalAlign="center" legendVerticalAlign="top" legendLayout="horizontal" class="layout-horizontal" title="" :dataProvider="pie.dataProvider" width="350" height="350"></e-pie-chart>
       </e-panel>
-      <e-panel title="정지 유형별 현황" style="width: 1200px; height: 840px; display: inline-block;">
-        <e-column-chart class="layout-horizontal" :title="pies[1].title" :ytitle="pies[1].ytitle" :dataProvider="pies[1].dataProvider" :xcategories="pies[1].xcategories" :unit="pies[1].unit" width="1150" height="260" :colors="['#7cb5ec', '#434348', '#90ed7d', '#f7a35c', '#8085e9', '#f15c80', '#e4d354', '#2b908f', '#f45b5b', '#91e8e1']"></e-column-chart>
-        <e-column-chart class="layout-horizontal" :title="pies[2].title" :ytitle="pies[2].ytitle" :dataProvider="pies[2].dataProvider" :xcategories="pies[2].xcategories" :unit="pies[2].unit" width="1150" height="250" :colors="['#434348', '#90ed7d', '#f7a35c', '#8085e9', '#f15c80', '#e4d354', '#2b908f', '#f45b5b', '#91e8e1', '#7cb5ec']"></e-column-chart>
-        <e-column-chart class="layout-horizontal" :title="pies[3].title" :ytitle="pies[3].ytitle" :dataProvider="pies[3].dataProvider" :xcategories="pies[3].xcategories" :unit="pies[3].unit" width="1150" height="250" :colors="['#90ed7d', '#f7a35c', '#8085e9', '#f15c80', '#e4d354', '#2b908f', '#f45b5b', '#91e8e1', '#7cb5ec', '#434348']"></e-column-chart>
-      </e-panel>
+      <div style="width: 1200px; height: 875px; display: inline-block;">
+        <e-panel :title="stop.title" v-for="stop in stops" :key="stop.title">
+          <e-stop-status-chart class="layout-horizontal" :title="stop.title" :ytitle="stop.ytitle" :leftDataProvider="stop.leftDataProvider" :rightDataProvider="stop.rightDataProvider" :xcategories="stop.xcategories" :unit="stop.unit" width="1150" height="180" :colors="['#7cb5ec', '#f7a35c', '#8085e9', '#f15c80', '#e4d354', '#2b908f', '#f45b5b', '#91e8e1']"></e-stop-status-chart>
+        </e-panel>
+      </div>
+
     </div>
     <e-footer></e-footer>
   </div>
@@ -62,7 +63,7 @@
   import ePanel from './Panel'
   import eGaugeChart from './GaugeChart'
   import ePieChart from './PieChart'
-  import eColumnChart from './ColumnChart'
+  import eStopStatusChart from './StopStatusChart'
   import eGrid from './Grid'
   import eFooter from './Footer'
 
@@ -71,22 +72,6 @@
       return {
         fromDate: this.formatDate(new Date),
         toDate: this.formatDate(new Date),
-        gauges: [{
-          title: "고속 60Ton",
-          value: 30
-        },{
-          title: "350Ton(TPL)",
-          value: 40
-        },{
-          title: "250Ton(TPL)",
-          value: 50
-        },{
-          title: "화일400Ton(Pro)",
-          value: 60
-        },{
-          title: "쌍용50Ton(Pro)",
-          value: 70
-        }],
         pies: [{
           title: "전체",
           dataProvider: [{
@@ -99,7 +84,8 @@
             name: '휴지',
             y: 6989
           }]
-        },{
+        }],
+        stops: [{
           title: "이상정지",
           ytitle: "시간 (분)",
           unit: "분",
@@ -113,10 +99,8 @@
             '샘플,금형Try',
             '계획변경'
           ],
-          dataProvider: [{
-            name: '정지 시간',
-            data: [1330,1698,400,482,0,70,11,0]
-          }]
+          leftDataProvider: [1330,1698,400,482,0,70,11,0],
+          rightDataProvider: [10,40,70,86,90,96,98,100]
         },{
           title: "생산정지",
           ytitle: "시간 (분)",
@@ -130,10 +114,8 @@
             '자재부족(생산)',
             '기타'
           ],
-          dataProvider: [{
-            name: '정지 시간',
-            data: [6196, 2882, 0, 1123, 0, 301, 23]
-          }]
+          leftDataProvider: [6196, 2882, 0, 1123, 0, 301, 23],
+          rightDataProvider: [5, 60, 80, 90, 96, 98, 100]
         },{
           title: "휴지",
           ytitle: "시간 (분)",
@@ -146,10 +128,8 @@
             '휴식',
             '기타'
           ],
-          dataProvider: [{
-            name: '정지 시간',
-            data: [20,849,0,0,6120,0]
-          }]
+          leftDataProvider: [20,849,0,0,6120,0],
+          rightDataProvider: [8,50,75,90,95,100]
         }],
         events:[{
             item: 'MAIN FILTER -TYCHE PRESS',
@@ -187,7 +167,7 @@
     methods: {
       formatDate(date) {
         let d = new Date(date),
-          month = '' + d.getMonth(),
+          month = '' + (d.getMonth()+1),
           day = '' + d.getDate(),
           year = d.getFullYear()
 
@@ -208,7 +188,7 @@
       ePanel,
       eGaugeChart,
       ePieChart,
-      eColumnChart,
+      eStopStatusChart,
       eGrid,
       eFooter
     }

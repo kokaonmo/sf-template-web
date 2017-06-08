@@ -9,7 +9,7 @@
   import Highcharts from 'highcharts'
 
   export default {
-    props: ['title', 'width', 'height', 'dataProvider', 'legendHorizontalAlign', 'legendVerticalAlign'],
+    props: ['title', 'width', 'height', 'dataProvider', 'legendHorizontalAlign', 'legendVerticalAlign', 'legendLayout'],
     data () {
       return {
         options: {
@@ -22,7 +22,7 @@
           legend: {
             align: this.legendHorizontalAlign,
             verticalAlign: this.legendVerticalAlign,
-            layout: 'vertical',
+            layout: this.legendLayout,
             x: 0,
             y: 40
           },
@@ -46,7 +46,8 @@
             name: '정지율',
             colorByPoint: true,
             data: this.dataProvider
-          }]
+          }],
+          colors:['#7cb5ec', '#90ed7d', '#f7a35c', '#8085e9', '#f15c80', '#e4d354', '#2b908f', '#f45b5b', '#91e8e1']
         }
       }
     }
