@@ -9,7 +9,7 @@
   import Highcharts from 'highcharts'
 
   export default {
-    props: ['title', 'width', 'height', 'dataProvider'],
+    props: ['title', 'width', 'height', 'dataProvider', 'legendHorizontalAlign', 'legendVerticalAlign'],
     data () {
       return {
         options: {
@@ -20,8 +20,8 @@
             type: 'pie'
           },
           legend: {
-            align: 'right',
-            verticalAlign: 'top',
+            align: this.legendHorizontalAlign,
+            verticalAlign: this.legendVerticalAlign,
             layout: 'vertical',
             x: 0,
             y: 40

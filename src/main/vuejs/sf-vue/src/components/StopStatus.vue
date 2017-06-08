@@ -1,18 +1,23 @@
 <template>
   <div id="page-wrapper" class="gray-bg dashbard-1">
     <div class="row border-bottom">
-      정지 현황
+      <stop-status-header></stop-status-header>
+      <stop-status-body></stop-status-body>
     </div>
   </div>
 </template>
 
 <script>
-  /* eslint-disable */
+  import StopStatusHeader from './StopStatusHeader'
+  import StopStatusBody from './StopStatusBody'
+
   export default {
     data () {
       return {}
     },
     components: {
+      StopStatusHeader,
+      StopStatusBody
     }
   }
 </script>

@@ -14,21 +14,9 @@
               <span v-if="item.submenu" class="fa arrow"></span>
             </a>
             <ul v-if="item.submenu" class="nav nav-second-level" v-bind:class="{collapse: !item.active}">
-              <!--<li v-for="(subitem, j) in item.submenu"><a v-bind:href="subitem.href" v-on:click="clickSub(j, $event)">{{subitem.title}}</a></li>-->
               <li v-for="(subitem, j) in item.submenu" v-bind:class="{active:subitem.active}"><a v-on:click="clickSub(j, $event, item.submenu, subitem)">{{subitem.caption}}</a></li>
-              <!--<li v-for="(subitem, j) in item.submenu"><router-link :to="{name: 'dashboard'}">{{subitem.title}}</router-link></li>-->
-              <!--<li v-for="(subitem, j) in item.submenu"><router-link :to="{name: subitem.href}">{{subitem.href}}</router-link></li>-->
             </ul>
           </li>
-          <!--li>
-            <a href="#">
-              <i class="fa fa-dashboard"></i>
-              <span class="nav-label">title</span>
-            </a>
-            <ul class="nav nav-second-level">
-              <li><a href="#">children.title</a></li>
-            </ul>
-          </li-->
         </ul>
 
       </ul>
@@ -38,9 +26,6 @@
 
 <script>
   /* eslint-disable */
-//  import '../../node_modules/jquery/dist/jquery.min.js';
-//  import '../../node_modules/metismenu/dist/metisMenu.min.css';
-//  import '../../node_modules/metismenu/dist/metisMenu.min.js';
   const testData = [
     {
       caption: '종합대쉬보드',
@@ -48,16 +33,6 @@
       active: true,
       path: '/',
       menuid: '100000'
-//      submenu: [
-//        {
-//          title: 'menu 1-1',
-//          href: 'http://naver.com'
-//        },
-//        {
-//          title: 'menu 1-2',
-//          href: 'http://daum.net'
-//        }
-//      ]
     },
     {
       caption: '가동률분석',
@@ -101,7 +76,6 @@
       }
     },
     mounted () {
-      //alert('mounted')
       let path = this.$router.currentRoute.path.substr(1)
       path = path.length<1?'/':path
 
@@ -127,7 +101,7 @@
       })
     },
     updated () {
-      //alert('updated')
+
     },
     destroyed (){
 

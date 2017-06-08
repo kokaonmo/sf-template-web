@@ -20,7 +20,7 @@
       <e-gauge-chart v-for="gauge in gauges" :key="gauge.title" class="layout-horizontal" :title="gauge.title" minValue="0" maxValue="100" :value="gauge.value" width="300" height="250"></e-gauge-chart>
     </e-panel>
     <e-panel title="정지현황" style="height: 300px">
-      <e-pie-chart v-for="pie in pies" :key="pie.name" class="layout-horizontal" :title="pie.title" :dataProvider="pie.dataProvider" width="350" height="250"></e-pie-chart>
+      <e-pie-chart v-for="pie in pies" :key="pie.name" class="layout-horizontal" :title="pie.title" :dataProvider="pie.dataProvider" legendHorizontalAlign="right" legendVerticalAlign="top" width="350" height="250"></e-pie-chart>
     </e-panel>
     <e-panel title="실시간 종합 이벤트" style="height: 210px;">
       <e-grid :dataProvider="events" :key="events.value" style="width: 740px; display: inline-block" @clickct="onClickct"></e-grid>

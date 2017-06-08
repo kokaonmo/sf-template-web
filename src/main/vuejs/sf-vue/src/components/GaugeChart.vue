@@ -65,8 +65,8 @@
             minorTickPosition: 'inside',
             minorTickColor: '#666',
 
-            tickPixelInterval: 30,
-            tickWidth: 2,
+            tickPixelInterval: 20,
+            tickWidth: 1,
             tickPosition: 'inside',
             tickLength: 10,
             tickColor: '#666',
