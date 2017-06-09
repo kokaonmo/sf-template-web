@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0; margin-left: 20px; height: 60px; line-height: 50px;">
     <div class="navbar-header">
-      <h2>정지현황</h2>
+      <h2>성능가동률</h2>
     </div>
   </nav>
 </template>

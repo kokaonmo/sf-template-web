@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import Home from '@/components/Home'
 import Dashboard from '@/components/Dashboard'
 import Availability from '@/components/Availability'
+import Performance from '@/components/Performance'
+import Operation from '@/components/Operation'
 import StopStatus from '@/components/StopStatus'
 
 Vue.use(Router)
@@ -25,6 +27,16 @@ export default new Router({
           path: 'availability',
           name: 'availability',
           component: Availability
+        },
+        {
+          path: 'performance',
+          name: 'performance',
+          component: Performance
+        },
+        {
+          path: 'operation',
+          name: 'operation',
+          component: Operation
         },
         {
           path: 'stopstatus',

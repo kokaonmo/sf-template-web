@@ -48,13 +48,13 @@
         },
         {
           caption: '성능가동률',
-          path: '#',
+          path: 'performance',
           menuid: '200002',
           active: false
         },
         {
           caption: '가동률',
-          path: '#',
+          path: 'operation',
           menuid: '200003',
           active: false
         }
