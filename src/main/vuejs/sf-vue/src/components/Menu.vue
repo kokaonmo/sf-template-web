@@ -29,7 +29,7 @@
   const testData = [
     {
       caption: '종합대쉬보드',
-      fontAwesome: 'dashboard',
+      fontAwesome: 'industry',
       active: true,
       path: '/',
       menuid: '100000'
@@ -62,9 +62,16 @@
     },
     {
       caption: '정지현황',
-      fontAwesome: 'envelope',
+      fontAwesome: 'pie-chart',
       path: 'stopstatus',
       menuid: '300000',
+      active: false
+    },
+    {
+      caption: '상관분석',
+      fontAwesome: 'coffee',
+      path: 'correlation',
+      menuid: '400000',
       active: false
     }
   ];

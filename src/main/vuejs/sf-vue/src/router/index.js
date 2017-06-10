@@ -6,6 +6,7 @@ import Availability from '@/components/Availability'
 import Performance from '@/components/Performance'
 import Operation from '@/components/Operation'
 import StopStatus from '@/components/StopStatus'
+import Correlation from '@/components/Correlation'
 
 Vue.use(Router)
 
@@ -42,6 +43,11 @@ export default new Router({
           path: 'stopstatus',
           name: 'stopstatus',
           component: StopStatus
+        },
+        {
+          path: 'correlation',
+          name: 'correlation',
+          component: Correlation
         }
       ]
     }

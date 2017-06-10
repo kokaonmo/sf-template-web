@@ -64,16 +64,11 @@
         }],
         pies: [{
           title: "전체",
-          dataProvider: [{
-            name: '이상정지',
-            y: 3991
-          }, {
-            name: '생산정지',
-            y: 10525
-          }, {
-            name: '휴지',
-            y: 6989
-          }]
+          dataProvider: [
+            ['이상정지',3991],
+            ['생산정지',10525],
+            ['휴지',6989]
+          ]
         },{
           title: "이상정지",
           dataProvider: [{
