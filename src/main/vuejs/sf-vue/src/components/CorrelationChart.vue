@@ -50,7 +50,7 @@
             verticalAlign: 'top'
           },
           series: [{
-            name: 'L0033',
+            name: 'D4000',
             type: 'spline',
             yAxis: 0,
             data: [
