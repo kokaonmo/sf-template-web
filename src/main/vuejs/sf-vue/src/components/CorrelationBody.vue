@@ -12,6 +12,33 @@
           <div class="input-group-addon">TO</div>
           <input type="date" class="form-control" v-model="toDate">
         </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">창고</div>
+          <select class="form-control">
+            <option>생산창고-1반</option>
+            <option>생산창고-2반</option>
+            <option>생산창고-3반</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">설비</div>
+          <select class="form-control">
+            <option>350Ton(TPL)</option>
+            <option>350Ton(TPL)</option>
+            <option>350Ton(TPL)</option>
+            <option>Door Line(조립)</option>
+            <option>Front Line(조립)</option>
+            <option>Motor,Funnel(조립)</option>
+            <option>350Ton(TPL)</option>
+            <option>클러치(조립)</option>
+            <option>화일400Ton(Pro)</option>
+            <option>고마츠80T</option>
+          </select>
+        </div>
         <button type="submit" class="btn btn-primary">Find</button>
       </div>
     </form>
