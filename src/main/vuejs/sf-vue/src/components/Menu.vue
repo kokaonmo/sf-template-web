@@ -18,6 +18,10 @@
             </ul>
           </li>
         </ul>
+        <div style="margin-top: 30%; text-align: center">
+          <span style="color: #0e9aef;">Admin (dev@ex-em.com)&nbsp;</span>
+          <button style="display: inline-block; width: 40px;" class="btn btn-primary" v-on:click="logout()">X</button>
+        </div>
 
       </ul>
     </div>
@@ -133,6 +137,10 @@
           v.active = i===index;
         })
         this.$emit('clickmenu', selectedMenu);
+      },
+
+      logout (){
+        location.href = "/logout";
       }
     }
   }
