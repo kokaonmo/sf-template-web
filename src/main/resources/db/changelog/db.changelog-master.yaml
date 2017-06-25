@@ -22,33 +22,6 @@ databaseChangeLog:
                   type: varchar(50)
                   constraints:
                     nullable: false
-        - createTable:
-            tableName: device
-            columns:
-              - column:
-                  name: id
-                  type: bigserial
-                  autoIncrement: true
-                  constraints:
-                    primaryKey: true
-                    nullable: false
-              - column:
-                  name: name
-                  type: varchar(50)
-                  constraints:
-                    nullable: false
-              - column:
-                  name: description
-                  type: varchar(1000)
-                  constraints:
-                    nullable: false
-              - column:
-                  name: user_username
-                  type: varchar(25)
-                  constraints:
-                    nullable: false
-                    references: user(username)
-                    foreignKeyName: fk_user_username
   - createSequence:
       sequenceName: hibernate_sequence
   - insert:
