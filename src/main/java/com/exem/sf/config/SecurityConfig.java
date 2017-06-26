@@ -1,6 +1,6 @@
 package com.exem.sf.config;
 
-import com.exem.sf.repository.UserRepository;
+import com.exem.sf.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
@@ -19,11 +19,11 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final UserRepository userRepository;
+    private final UsersRepository usersRepository;
 
     @Autowired
-    public SecurityConfig(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public SecurityConfig(UsersRepository userRepository) {
+        this.usersRepository = userRepository;
     }
 
     @Override
@@ -32,12 +32,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/").access("hasRole('USER')")
-                .antMatchers("/login").access("hasRole('ANONYMOUS')")
+                //.antMatchers("/login").access("hasRole('ANONYMOUS')")
                 .antMatchers("/**").permitAll()
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .loginProcessingUrl("/loginProcess")
+                //.loginProcessingUrl("/loginProcess")
                 .failureUrl("/login?error=true");
     }
 
@@ -47,7 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             @Override
             public UserDetails loadUserByUsername(String username)
                     throws UsernameNotFoundException {
-                return userRepository.findOne(username);
+                return usersRepository.findOne(username);
             }
         });
     }

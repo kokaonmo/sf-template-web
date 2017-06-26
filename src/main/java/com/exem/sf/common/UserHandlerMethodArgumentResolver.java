@@ -1,6 +1,6 @@
 package com.exem.sf.common;
 
-import com.exem.sf.domain.User;
+import com.exem.sf.domain.Users;
 import org.springframework.core.MethodParameter;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.support.WebDataBinderFactory;
@@ -15,14 +15,14 @@ public class UserHandlerMethodArgumentResolver implements HandlerMethodArgumentR
 
 	@Override
 	public boolean supportsParameter(MethodParameter parameter) {
-		return User.class.isAssignableFrom(parameter.getParameterType());
+		return Users.class.isAssignableFrom(parameter.getParameterType());
 	}
 
 	@Override
 	public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer,
                                   NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
 		Authentication auth = (Authentication) webRequest.getUserPrincipal();
-        return auth != null && auth.getPrincipal() instanceof User ? auth.getPrincipal() : null;
+        return auth != null && auth.getPrincipal() instanceof Users ? auth.getPrincipal() : null;
 	}
 
 }

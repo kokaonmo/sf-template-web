@@ -1,22 +1,17 @@
-service:
-  info:
-    name: Smart Factory Dashboard Service
-    version: 1.0.0
-
-error:
-  whitelabel:
-    enabled: false
-
 spring:
+  application:
+    name: Smart Factory Dashboard Service
+  profiles:
+    active: development
   mvc:
     formcontent:
       putfilter:
         enabled: true
-  jpa:
-    hibernate:
-      ddl-auto: none
   messages:
     basename: messages_ko
+  jpa:
+      hibernate:
+        ddl-auto: none
 
 #liquibase:
 #  change-log: classpath:/db/changelog/db.changelog-master.xml
@@ -29,12 +24,21 @@ logging:
 
 spring:
   profiles: development
+  datasource:
+    url: jdbc:postgresql://10.10.31.33:5432/test
+    username: postgres
+    password: exem
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+
 
 logging:
   level:
     root: DEBUG
 
 ---
+
 spring:
   profiles: production
   datasource:

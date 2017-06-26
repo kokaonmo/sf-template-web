@@ -4,7 +4,7 @@ databaseChangeLog:
       author: postgres
       changes:
         - createTable:
-            tableName: user
+            tableName: users
             columns:
               - column:
                   name: username
@@ -22,17 +22,17 @@ databaseChangeLog:
                   type: varchar(50)
                   constraints:
                     nullable: false
-  - createSequence:
-      sequenceName: hibernate_sequence
-  - insert:
-    tableName: user
-    columns:
-      - column:
-         name: username
-         value: test
-      - column:
-         name: password
-         value: test
-      - column:
-         name: fullname
-         value: Tester
+        - createSequence:
+            sequenceName: hibernate_sequence
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: username
+                  value: admin
+              - column:
+                  name: password
+                  value: 1234
+              - column:
+                  name: fullname
+                  value: Admin
